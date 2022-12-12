@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<!--猛男从不需要CSS-->
+
+<h1>注册</h1>
+<div>用户名:<input type="text" id="uid" ></input></div>
+<div>密码:&nbsp;<input type="password" id="pwd" ></input></div>
+<!--后面再加吧，害-->
+<!--<div>确认密码:<input type="password" id="pwd1" ></input></div>-->
+<div><input type="button" value="注册" id="btn"></input></div>
+
+<a href="Login.html">已有账号？点击登录</a>
+
+
+
+</body><!--用JQuery写ajax -->
+
+<script type="text/javascript">
+    $(document).ready(function(e){
+
+        $("#btn").click(function(){
+
+            const uid = $("#uid").val();
+            const pwd = $("#pwd").val();
+
+            $.ajax({//四个参数,顺序不限
+                url:"/register",
+                //处理页面的路径
+                data:{
+                    username:uid,
+                    password:pwd
+                },
+                //传递的数据.提交数一般以json格式来写,key是自定义的,:后面的值 就是上面的值
+                type:"POST",
+                //数据的提交传递方式,GET,POST 最好用POST
+                datatype:"TEXT",
+                //返回值的类型,TEXT,JSON,XML三种类型可选
+                success:function(data){
+                    //如果ajax执行成功,返回来调用success函数即回调函数,返回值以参数的形式返回
+
+                    if(data==="Success")
+                    {
+                        window.location="Login.html";
+                    }
+                    else
+                    {
+                        alert(data);
+                    }
+
+                },
+
+            });
+
+        })
+    });
+
+</script>
+
+
+</html>

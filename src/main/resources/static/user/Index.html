@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<h1>啥也没有的论坛首页</h1>
+<!--设置登出，将会清除该用户的Session-->
+<a href="../admin/Admin.html">管理员页面(普通用户点击无效)</a>
+
+<p>还未实现的功能:修改密码,展示用户(Session里面有用户的数据)</p>
+<p>发帖(文字)</p>
+<p>帖子的评论</p>
+
+<button onclick="logout()">登出</button>
+
+</body>
+
+<script type="text/javascript">
+function logout(){
+    const result = confirm("确定要退出吗？");
+    if(result){
+        location.href="../Home.html";
+
+}
+
+}
+</script>
+</html>

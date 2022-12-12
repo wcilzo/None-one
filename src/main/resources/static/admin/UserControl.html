@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+
+<h1>用户管理页面</h1>
+<h3>用户列表</h3>
+<!--先返回Json,也可以搞成分页，然后渲染,在每一条数据那里新增一些按钮绑定用户的CRUD-->
+<div id="users">
+
+</div>
+
+<p>用户权限管理(修改role字段)还有用户的CRUD</p>
+
+</body>
+<script type="text/javascript">
+    $.ajax({
+        url: "/getAllUsers",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            console.log(JSON.stringify(data))
+            let str = "<ul>";
+            $.each(data,function(i,items){
+                str+="<li>"+"用户名："+items.username+"</li>";
+                str+="<li>"+"密码："+items.password+"</li>";
+                str+="<li>"+"用户权限："+items.role+"</li>";
+            });
+            str+="</ul>";
+            $("div").append(str);
+
+        }
+    })
+
+
+</script>
+
+
+</html>
